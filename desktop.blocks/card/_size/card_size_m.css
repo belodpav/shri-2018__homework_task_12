@@ -1,0 +1,4 @@
+.card_size_m {
+    grid-column: span 3;
+    height: 30.5rem;
+}

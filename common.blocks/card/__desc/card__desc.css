@@ -1,0 +1,8 @@
+.card__desc {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

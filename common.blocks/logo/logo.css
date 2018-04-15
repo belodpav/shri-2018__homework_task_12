@@ -1,0 +1,11 @@
+.logo {
+    display: inline-block;
+    width: 9.1rem;
+    height: 2.9rem;
+    background-image: url(logo.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+    font-size: 0;
+    line-height: 0;
+}

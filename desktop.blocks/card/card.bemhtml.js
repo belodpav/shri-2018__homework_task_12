@@ -1,0 +1,3 @@
+block('card')({
+    js: true
+})
