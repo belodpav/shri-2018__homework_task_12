@@ -35,71 +35,75 @@ isProd || levels.push('development.blocks');
 
 const platform = process.env.PLATFORM || 'desktop';
 
-console.log(platform);
 
 module.exports = function(config) {
-    config.nodes(platform + '.bundles/*', function(nodeConfig) {
-        nodeConfig.addTechs([
-            // essential
-            [enbBemTechs.levels, { levels: l[platform] }],
-            [techs.fileProvider, { target: '?.bemdecl.js' }],
-            [enbBemTechs.deps],
-            [enbBemTechs.files],
+    const bundles = Object.keys(l);
+    bundles.forEach((platform) => {
 
-            // css
-            [techs.postcss, {
-                target: '?.css',
-                oneOfSourceSuffixes: ['post.css', 'css'],
-                plugins: techs.postcssPlugins
-            }],
 
-            // bemtree
-            [techs.bemtree, { sourceSuffixes: ['bemtree', 'bemtree.js'] }],
+        config.nodes(platform + '.bundles/*', function(nodeConfig) {
+            nodeConfig.addTechs([
+                // essential
+                [enbBemTechs.levels, { levels: l[platform] }],
+                [techs.fileProvider, { target: '?.bemdecl.js' }],
+                [enbBemTechs.deps],
+                [enbBemTechs.files],
 
-            // templates
-            [techs.bemhtml, {
-                sourceSuffixes: ['bemhtml', 'bemhtml.js'],
-                forceBaseTemplates: true,
-                engineOptions: { elemJsInstances: true }
-            }],
+                // css
+                [techs.postcss, {
+                    target: '?.css',
+                    oneOfSourceSuffixes: ['post.css', 'css'],
+                    plugins: techs.postcssPlugins
+                }],
 
-            // client templates
-            [enbBemTechs.depsByTechToBemdecl, {
-                target: '?.tmpl.bemdecl.js',
-                sourceTech: 'js',
-                destTech: 'bemhtml'
-            }],
-            [enbBemTechs.deps, {
-                target: '?.tmpl.deps.js',
-                bemdeclFile: '?.tmpl.bemdecl.js'
-            }],
-            [enbBemTechs.files, {
-                depsFile: '?.tmpl.deps.js',
-                filesTarget: '?.tmpl.files',
-                dirsTarget: '?.tmpl.dirs'
-            }],
-            [techs.bemhtml, {
-                target: '?.browser.bemhtml.js',
-                filesTarget: '?.tmpl.files',
-                sourceSuffixes: ['bemhtml', 'bemhtml.js'],
-                engineOptions: { elemJsInstances: true }
-            }],
+                // bemtree
+                [techs.bemtree, { sourceSuffixes: ['bemtree', 'bemtree.js'] }],
 
-            // js
-            [techs.browserJs, { includeYM: true }],
-            [techs.fileMerge, {
-                target: '?.js',
-                sources: ['?.browser.js', '?.browser.bemhtml.js']
-            }],
+                // templates
+                [techs.bemhtml, {
+                    sourceSuffixes: ['bemhtml', 'bemhtml.js'],
+                    forceBaseTemplates: true,
+                    engineOptions: { elemJsInstances: true }
+                }],
 
-            // borschik
-            [techs.borschik, { source: '?.js', target: '?.min.js', minify: isProd }],
-            [techs.borschik, { source: '?.css', target: '?.min.css', minify: isProd }],
+                // client templates
+                [enbBemTechs.depsByTechToBemdecl, {
+                    target: '?.tmpl.bemdecl.js',
+                    sourceTech: 'js',
+                    destTech: 'bemhtml'
+                }],
+                [enbBemTechs.deps, {
+                    target: '?.tmpl.deps.js',
+                    bemdeclFile: '?.tmpl.bemdecl.js'
+                }],
+                [enbBemTechs.files, {
+                    depsFile: '?.tmpl.deps.js',
+                    filesTarget: '?.tmpl.files',
+                    dirsTarget: '?.tmpl.dirs'
+                }],
+                [techs.bemhtml, {
+                    target: '?.browser.bemhtml.js',
+                    filesTarget: '?.tmpl.files',
+                    sourceSuffixes: ['bemhtml', 'bemhtml.js'],
+                    engineOptions: { elemJsInstances: true }
+                }],
 
-            [techs.fileCopy, { source: '?.min.js', target: `../../static/?.min.js` }],
-            [techs.fileCopy, { source: '?.min.css', target: `../../static/?.min.css` }]
-        ]);
+                // js
+                [techs.browserJs, { includeYM: true }],
+                [techs.fileMerge, {
+                    target: '?.js',
+                    sources: ['?.browser.js', '?.browser.bemhtml.js']
+                }],
 
-        nodeConfig.addTargets(['?.bemtree.js', '?.bemhtml.js', `../../static/?.min.js`, `../../static/?.min.css`]);
-    });
+                // borschik
+                [techs.borschik, { source: '?.js', target: '?.min.js', minify: isProd }],
+                [techs.borschik, { source: '?.css', target: '?.min.css', minify: isProd }],
+
+                [techs.fileCopy, { source: '?.min.js', target: `../../static/?.min.js` }],
+                [techs.fileCopy, { source: '?.min.css', target: `../../static/?.min.css` }]
+            ]);
+
+            nodeConfig.addTargets(['?.bemtree.js', '?.bemhtml.js', `../../static/?.min.js`, `../../static/?.min.css`]);
+        });
+    })
 };
