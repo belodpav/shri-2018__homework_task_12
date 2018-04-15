@@ -22,6 +22,7 @@ block('root')({
                         font-size: 10px;
                     }
                     `
+                }
             ],
             scripts: [
                 {
