@@ -1,4 +1,11 @@
 block('card').mod('size', 's')({
+    mods: (node, ctx) => {
+        if (ctx.data.image) {
+            return {size: 's'}
+        }
+
+        return {size: 's', space: 'none'}
+    },
     content: (node, ctx) => {
         const {description} = ctx.data;
 
@@ -55,7 +62,7 @@ block('card').mod('size', 's')({
                                 {
                                     block: 'card',
                                     elem: 'controls',
-                                    elemMods: {type: 'h'}
+                                    elemMods: {type: 'h', width: 'short'}
                                 }
                             ]
                         }
