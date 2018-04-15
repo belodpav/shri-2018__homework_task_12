@@ -14,7 +14,14 @@ block('root')({
                 {
                     elem: 'css',
                     url: '/touch.min.css'
-                }
+                },
+                {
+                    elem: 'css',
+                    content: `
+                    html {
+                        font-size: 10px;
+                    }
+                    `
             ],
             scripts: [
                 {
