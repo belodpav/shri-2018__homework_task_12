@@ -23,6 +23,7 @@ block('root')({
                 }
             ],
             head: [
+                { elem: 'meta', attrs: {name: 'robots', content: 'no-index'}},
                 { elem: 'meta', attrs: { name: 'description', content: meta.description } },
                 { elem: 'meta', attrs: { property: 'og:title', content: og.title || data.title } },
                 { elem: 'meta', attrs: { property: 'og:url', content: og.url } },
