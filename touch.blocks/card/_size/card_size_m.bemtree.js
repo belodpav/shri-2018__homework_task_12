@@ -19,7 +19,7 @@ block('card').mod('size', 'm')({
             },
             {
                 elem: 'desc-box',
-                elemMods: {type: 'h'},
+                elemMods: {type: 'h', space: 'top'},
                 content: [
                     {
                         block: 'card',

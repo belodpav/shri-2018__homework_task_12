@@ -52,6 +52,9 @@
     background: #fff;
     width: 100%;
 }
+.card__title {
+    padding-bottom: 1rem;
+}
 .card__img {
     width: 100%;
 }
@@ -161,8 +164,11 @@
         -ms-flex-align: center;
             align-items: center;
 }
+.card__footer {
+    height: 3rem;
+}
 .feed__item {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
 }
 .page_view_404 {
     color: red;
@@ -226,4 +232,10 @@
 }
 .card__desc-box_type_v {
     position: relative;
+}
+.card__desc-box_space_top {
+    padding-top: 1rem;
+}
+.card_space_none {
+    padding-top: 0;
 }
