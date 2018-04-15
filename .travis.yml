@@ -1,9 +1,13 @@
 sudo: false
 language: node_js
 node_js:
-  - "8"
+- '8'
 cache:
   directory:
-    - "node_modules"
-script:
-  npm run lint
+  - node_modules
+script: npm run lint
+deploy:
+  provider: heroku
+  api_key:
+    secure: XI6ojNaBZRvw5zaJwW65Tn8NtU0El1XmXKLgjG/gDsrlxzFmc+ylEeEw7lG6y6dnTu6TrllpQ2hXqNkVdT+mcQJ4KcWD7OOXNlK0SK0Gdvt+pDwYOK7TYZoCzeB0pCDqCOgGgjz8nwwO484efB65c3YqyN35XPN35SMnsLTzJGd4iK0MlMFMbCbkFwZHDke2jmeFLtqVoKlQ7cVYAnjciWZWYvaB5B8J/Usa4YwHfcZd4FZSzLny9wedoGCVUPgVyony1n1bYHVc9QTLStk0f9ZxmGCI8/MR7bsLUk+iNSRLSOU8c6Ndzth/V8d4HcWbJfAMQq9or8rmk1Uq/DyUOgBI1vSvjQ26PcVlOLk1KkqOKbd4RTWnMRuWO5QGgP5E+wsjph9wb8xvXqdwIZO4OH9v/xq3B6hJJfrsIRHdiDn3rm71NyFhnEX10PkJdl3MG7zWlwNo6HZUHiv83Jf3GYmqZC3m5s/YSRv6U+F/j14XH314+9s6qh2fGR2Obl9WI/Q3yRrZrjFdhzMmBjmKCKq+Hps8NeSKfRAj5zdqauVTZCH7S9k2faFZXy6oHJYSqU9Z+WJlJeFri88uEhCEwJcraMSwPixBIuz9xtZ0w5iQnB4yxhqY2KiUwrdJs66dLRI/l68lkKrqXs/h8HzUeHvgNLhriGPBzpbc/5YEyCQ=
+    app: shri-2018-12
