@@ -1,7 +1,10 @@
 ({
     shouldDeps: [
         {
-            elems: ['part']
+            elems: ['part'],
+            mods: {
+                'converted-text': true
+            }
         }
     ]
 })

@@ -1,5 +1,4 @@
 block('card').mod('size', 'l')({
-    js: true,
     content: (node, ctx) => {
         const {description} = ctx.data;
 
